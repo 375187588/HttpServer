@@ -33,6 +33,8 @@ class responseMessage
 
         void init(requestMessage& reqstMsg);
 
+        int respsCode(){ return respsLine.GetstatusCode(); }
+
     protected:
 
     private:

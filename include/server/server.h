@@ -29,4 +29,5 @@ class server
         static server *serv;
 };
 
+
 #endif // SERVER_H

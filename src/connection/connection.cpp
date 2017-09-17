@@ -33,6 +33,7 @@ void connection::handle()
             break;
         }
     }
+    return ;
 }
 
 void connection::getReqst()
@@ -51,19 +52,26 @@ void connection::sendResps()
 
 void connection::sendContent()
 {
-    reqstFile.open(respsMsg.GetfilePath(),ios::binary);
-    if(reqstFile&&reqstFile.good())
+    if(respsMsg.respsCode()==200)
     {
-        while(!(reqstFile.eof()))
+        reqstFile.open(respsMsg.GetfilePath(),ios::binary);
+        if(reqstFile&&reqstFile.good())
         {
-            reqstFile.read(send_Buff,1024);
-            if(reqstFile)
-                write(client_FD,send_Buff,1024);
-            else
-                write(client_FD,send_Buff,reqstFile.gcount());
-            cout<<send_Buff;
+            while(!(reqstFile.eof()))
+            {
+                reqstFile.read(send_Buff,1024);
+                if(reqstFile)
+                    write(client_FD,send_Buff,1024);
+                else
+                    write(client_FD,send_Buff,reqstFile.gcount());
+                cout<<send_Buff;
+            }
+            cout<<endl;
+            reqstFile.close();
         }
-        cout<<endl;
-        reqstFile.close();
+    }
+    else
+    {
+        cout<<"No Content"<<endl;
     }
 }

@@ -4,6 +4,7 @@
  * 	Git 	@ github.com/XiaoWeicheng
  */
 #include <bits/stdc++.h>
+#include <thread>
 
 #include "server/server.h"
 #include "request/requestMessage.h"
@@ -52,7 +53,7 @@ void server::init()
 
 void server::run()
 {
-    state_Msg=listen(server_FD,5);
+    state_Msg=listen(server_FD,1024);
     if(state_Msg<0)
     {
         cerr<<"Listen failed"<<endl;
@@ -69,8 +70,11 @@ void server::run()
         }
         else
         {
-            connection(client_FD).handle();
+            connection conn(client_FD);
+            //conn.handle();
+            thread(&connection::handle,ref(conn)).join();
         }
     }
     close(server_FD);
 }
+

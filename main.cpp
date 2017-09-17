@@ -8,10 +8,8 @@
 
 #include "DefineAndStatic.h"
 #include "server/server.h"
-#include "staticDate.h"
 
 using namespace std;
-
 
 int main()
 {

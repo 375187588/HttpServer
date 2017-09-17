@@ -1,13 +1,12 @@
 # depslib dependency file v1.0
-1505564419 source:/root/桌面/HttpServer/main.cpp
+1505664240 source:/root/桌面/HttpServer/main.cpp
 	<bits/stdc++.h>
 	"DefineAndStatic.h"
 	"server/server.h"
-	"staticDate.h"
 
-1505554622 /root/桌面/HttpServer/include/DefineAndStatic.h
+1505664477 /root/桌面/HttpServer/include/DefineAndStatic.h
 
-1505560180 /root/桌面/HttpServer/include/server/server.h
+1505658373 /root/桌面/HttpServer/include/server/server.h
 	"request/requestMessage.h"
 	"response/responseMessage.h"
 	"net.h"
@@ -20,7 +19,7 @@
 
 1505447716 /root/桌面/HttpServer/include/request/requestHead.h
 
-1505559389 /root/桌面/HttpServer/include/response/responseMessage.h
+1505662987 /root/桌面/HttpServer/include/response/responseMessage.h
 	"response/responseLine.h"
 	"response/responseHead.h"
 	"request/requestMessage.h"
@@ -38,7 +37,7 @@
 
 1505564936 /root/桌面/HttpServer/include/staticDate.h
 
-1505566012 source:/root/桌面/HttpServer/src/connection/connection.cpp
+1505664923 source:/root/桌面/HttpServer/src/connection/connection.cpp
 	<bits/stdc++.h>
 	"DefineAndStatic.h"
 	"net.h"
@@ -73,16 +72,17 @@
 	"response/responseLine.h"
 	"DefineAndStatic.h"
 
-1505565675 source:/root/桌面/HttpServer/src/response/responseMessage.cpp
+1505664745 source:/root/桌面/HttpServer/src/response/responseMessage.cpp
 	<bits/stdc++.h>
 	<ctime>
 	"response/responseMessage.h"
-	"staticDate.h"
+	"staticData.h"
 	"DefineAndStatic.h"
 	"net.h"
 
-1505562838 source:/root/桌面/HttpServer/src/server/server.cpp
+1505663308 source:/root/桌面/HttpServer/src/server/server.cpp
 	<bits/stdc++.h>
+	<thread>
 	"server/server.h"
 	"request/requestMessage.h"
 	"DefineAndStatic.h"
@@ -92,4 +92,11 @@
 	<bits/stdc++.h>
 	<DefineAndStatic.h>
 	"staticDate.h"
+
+1505664731 /root/桌面/HttpServer/include/staticData.h
+
+1505664782 source:/root/桌面/HttpServer/src/staticData.cpp
+	<bits/stdc++.h>
+	<DefineAndStatic.h>
+	"staticData.h"
 

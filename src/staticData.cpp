@@ -6,20 +6,18 @@
 
 #include <bits/stdc++.h>
 #include <DefineAndStatic.h>
-#include "staticDate.h"
+#include "staticData.h"
 
-using namespace std;
+staticData* staticData::sd=NULL;
 
-staticDate* staticDate::sd=NULL;
-
-staticDate* staticDate::getsDate()
+staticData* staticData::getsData()
 {
     if(sd==NULL)
-        sd=new staticDate();
+        sd=new staticData();
     return sd;
 }
 
-void staticDate::initMIME()
+void staticData::initMIME()
 {
     Method.insert("GET");
     Method.insert("HEAD");

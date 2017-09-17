@@ -8,7 +8,7 @@
 #include <ctime>
 
 #include "response/responseMessage.h"
-#include "staticDate.h"
+#include "staticData.h"
 #include "DefineAndStatic.h"
 #include "net.h"
 
@@ -39,7 +39,7 @@ void responseMessage::init(requestMessage& reqstMsg)
 
     filePath=WEB_ROOT+reqstMsg.GetreqstLine().Geturi();
 
-    if(staticDate::getsDate()->Method.count(reqstMsg.GetreqstLine().Getmethod().c_str())>0)
+    if(staticData::getsData()->Method.count(reqstMsg.GetreqstLine().Getmethod().c_str())>0)
     {
         respsLine.SetstatusCode(501);
         respsLine.Setstatus("Not Implemented");
@@ -48,9 +48,9 @@ void responseMessage::init(requestMessage& reqstMsg)
     {
         if(filePath.rfind('/')==filePath.length()-1) filePath+="index.html";
         if(access(filePath.c_str(),F_OK)==-1)
-            respsLine.SetstatusCode(404),respsLine.Setstatus(staticDate::getsDate()->StatusMsg[404]),filePath="";
+            respsLine.SetstatusCode(404),respsLine.Setstatus(staticData::getsData()->StatusMsg[404]),filePath="";
         else
-            respsLine.SetstatusCode(200),respsLine.Setstatus(staticDate::getsDate()->StatusMsg[200]);
+            respsLine.SetstatusCode(200),respsLine.Setstatus(staticData::getsData()->StatusMsg[200]);
     }
 
     char date[40];
@@ -64,7 +64,7 @@ void responseMessage::init(requestMessage& reqstMsg)
     respsHead.Setconnection(reqstMsg.GetreqstHead().Getconnection());
     std::string ftype=filePath.substr(filePath.rfind('.')+1);
 
-    respsHead.Setcontent_Type(staticDate::getsDate()->MIME[ftype]);
+    respsHead.Setcontent_Type(staticData::getsData()->MIME[ftype]);
     if(respsLine.GetstatusCode()==200)
     {
         std::ifstream reqstFile(filePath,std::ifstream::binary);
